@@ -1,0 +1,36 @@
+<h1>Prueba Rails APP_ToDo</h1>
+<div class="card bg-light mb-3, card-header">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col"><h2>Descripción</h2></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <% @todos.each do |todo| %>
+        <tbody>
+          <tr class="table-light">
+            <th scope="row">
+              <h3><%= todo.description%></h3>
+              <p> <%='Completed' if todo.completed %></p>
+            </th>
+            <td>
+              <h3> <%= link_to "Mostrar", todo, class: "btn btn-success" %> </h3>
+            </td>
+            <td>
+              <h3> <%= link_to "Editar", edit_todo_path(todo), class: "btn btn-success" %> </h3>
+            </td>
+            <td>
+              <h3> <%= link_to "Borrar", todo, method: :delete, data: { confirm: 'Estás seguro que desea eliminar?' }, class: "btn btn-primary" %> </h3>
+            </td>
+            <td>
+              <h3> <%= link_to "Completar", completed_path(todo), class: "btn btn-danger" %> </h3>
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+</div>
+<h3><%= link_to 'Crear Nuevo ToDo', todos_new_path, class: 'btn btn-info' %></h3>
